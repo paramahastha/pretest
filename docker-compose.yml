@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    build:
+      context: ./database
+    ports:
+      - '5432'
+    volumes:
+      - ./database/pgdata:/pgdata
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=pretest_db
+
+  api:
+    build:
+      context: ./api
+      args:
+        app_env: ${APP_ENV}
+    volumes:
+      - ./api:/go/src/github.com/paramahastha/pretest/api
+    ports:
+      - '5000:8080'
+    links:
+      - db
