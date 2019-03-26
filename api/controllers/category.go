@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/paramahastha/pretest/api/forms"
@@ -39,7 +38,7 @@ func (ctrl CategoryController) Create(c *gin.Context) {
 //All ...
 func (ctrl CategoryController) All(c *gin.Context) {
 	data, err := categoryModel.All()
-	
+
 	if err != nil {
 		c.JSON(406, gin.H{"Message": "Could not get the categories", "error": err.Error()})
 		c.Abort()
@@ -56,7 +55,7 @@ func (ctrl CategoryController) One(c *gin.Context) {
 	if id, err := strconv.ParseInt(id, 10, 64); err == nil {
 
 		data, err := categoryModel.One(id)
-		fmt.Printf("%v %s", data, err)
+
 		if err != nil {
 			c.JSON(404, gin.H{"Message": "Category not found", "error": err.Error()})
 			c.Abort()
