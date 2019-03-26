@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"runtime"
 
+	"github.com/paramahastha/pretest/api/controllers"
 	"github.com/paramahastha/pretest/api/db"
 
 	"github.com/gin-gonic/gin"
@@ -35,6 +36,19 @@ func main() {
 	r.Use(CORSMiddleware())
 
 	db.Init()
+
+	v1 := r.Group("/v1")
+	{
+
+		category := new(controllers.CategoryController)
+
+		v1.POST("/category", category.Create)
+		v1.GET("/categories", category.All)
+		v1.GET("/category/:id", category.One)
+		v1.PUT("/category/:id", category.Update)
+		v1.DELETE("/category/:id", category.Delete)
+
+	}
 
 	r.LoadHTMLGlob("./public/html/*")
 
