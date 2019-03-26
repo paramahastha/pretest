@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/paramahastha/pretest/api/forms"
@@ -56,7 +55,7 @@ func (ctrl ImageController) One(c *gin.Context) {
 	if id, err := strconv.ParseInt(id, 10, 64); err == nil {
 
 		data, err := imageModel.One(id)
-		
+
 		if err != nil {
 			c.JSON(404, gin.H{"Message": "Image not found", "error": err.Error()})
 			c.Abort()
