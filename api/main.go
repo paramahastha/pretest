@@ -56,6 +56,14 @@ func main() {
 		v1.PUT("/product/:id", product.Update)
 		v1.DELETE("/product/:id", product.Delete)
 
+		image := new(controllers.ImageController)
+
+		v1.POST("/image", image.Create)
+		v1.GET("/images", image.All)
+		v1.GET("/image/:id", image.One)
+		v1.PUT("/image/:id", image.Update)
+		v1.DELETE("/image/:id", image.Delete)
+
 	}
 
 	r.LoadHTMLGlob("./public/html/*")
