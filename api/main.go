@@ -48,6 +48,14 @@ func main() {
 		v1.PUT("/category/:id", category.Update)
 		v1.DELETE("/category/:id", category.Delete)
 
+		product := new(controllers.ProductController)
+
+		v1.POST("/product", product.Create)
+		v1.GET("/products", product.All)
+		v1.GET("/product/:id", product.One)
+		v1.PUT("/product/:id", product.Update)
+		v1.DELETE("/product/:id", product.Delete)
+
 	}
 
 	r.LoadHTMLGlob("./public/html/*")
