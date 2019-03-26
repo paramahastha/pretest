@@ -1,6 +1,6 @@
 # BE Pre-Test
 
-A project that runs a Go server and a PostgreSQL via two separate containers, using Docker Compose.
+A project that runs a Go server (Gin-Gonic) and a PostgreSQL via two separate containers, using Docker Compose.
 
 ## Required
 
