@@ -39,7 +39,7 @@ func (ctrl CategoryController) Create(c *gin.Context) {
 //All ...
 func (ctrl CategoryController) All(c *gin.Context) {
 	data, err := categoryModel.All()
-	fmt.Printf("%v", err)
+	
 	if err != nil {
 		c.JSON(406, gin.H{"Message": "Could not get the categories", "error": err.Error()})
 		c.Abort()

@@ -22,12 +22,10 @@ func (m CategoryModel) Create(form forms.CategoryForm) (err error) {
 	getDb := db.GetDB()
 
 	_, err = getDb.Exec("INSERT INTO public.category(name, enable) VALUES($1, $2) RETURNING id", form.Name, form.Enable)
-	// fmt.Printf(result)
+	
 	if err != nil {
 		return err
-	}
-
-	// articleID, err = getDb.SelectInt("SELECT id FROM public.article WHERE user_id=$1 ORDER BY id DESC LIMIT 1", userID)
+	}	
 
 	return err
 }
