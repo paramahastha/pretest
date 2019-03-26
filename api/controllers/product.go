@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/paramahastha/pretest/api/forms"
@@ -39,7 +38,7 @@ func (ctrl ProductController) Create(c *gin.Context) {
 //All ...
 func (ctrl ProductController) All(c *gin.Context) {
 	data, err := productModel.All()
-	fmt.Printf("%v", data)
+
 	if err != nil {
 		c.JSON(406, gin.H{"Message": "Could not get the products", "error": err.Error()})
 		c.Abort()
@@ -56,7 +55,7 @@ func (ctrl ProductController) One(c *gin.Context) {
 	if id, err := strconv.ParseInt(id, 10, 64); err == nil {
 
 		data, err := productModel.One(id)
-		fmt.Printf("%v %s", data, err)
+
 		if err != nil {
 			c.JSON(404, gin.H{"Message": "Product not found", "error": err.Error()})
 			c.Abort()
